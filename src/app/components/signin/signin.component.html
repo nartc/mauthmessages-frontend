@@ -1,0 +1,30 @@
+<h3>Sign In</h3>
+<br>
+<form [formGroup]="signInForm" (ngSubmit)="onSignInSubmit()" ngNativeValidate>
+  <div class="form-group">
+      <label for="email">Mail</label>
+      <div class="input-group">
+          <input type="email" 
+                  id="email" 
+                  class="form-control"
+                  formControlName="email">
+          <span class="input-group-addon" *ngIf="signInForm.controls['email'].valid"><i class="fa fa-check" aria-hidden="true"></i></span>
+      </div>
+      <div class="alert alert-danger animated flipInX" *ngIf="!signInForm.controls['email'].valid && signInForm.controls['email'].touched">
+          <span *ngIf="signInForm.controls['email'].errors['required']">This field is required</span>
+          <span *ngIf="signInForm.controls['email'].errors['pattern']">Must enter a valid email</span>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="password">Password</label>
+          <input type="password" 
+                  id="password" 
+                  class="form-control"
+                  formControlName="password">
+      <div class="alert alert-danger animated flipInX" *ngIf="!signInForm.controls['password'].valid && signInForm.controls['password'].dirty">
+          <span *ngIf="signInForm.controls['password'].errors['required']">This field is required</span>
+          <span *ngIf="signInForm.controls['password'].errors['minlength']">Must be at least 6 characters</span>
+      </div>
+  </div>
+  <button class="btn btn-success btn-block" type="submit" style="cursor:pointer" [disabled]="!signInForm.valid">Signin</button>
+</form>

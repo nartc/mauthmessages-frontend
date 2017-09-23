@@ -1,0 +1,73 @@
+<h3>Sign Up</h3>
+<br>
+<form [formGroup]="signUpForm" (ngSubmit)="onSignUpSubmit(signUpForm.value)" ngNativeValidate>
+  <div class="form-group">
+      <label for="firstName">First Name</label>
+      <div class="input-group">
+          <input type="text" 
+                  id="firstName" 
+                  class="form-control"
+                  formControlName="firstName">
+          <span class="input-group-addon" *ngIf="signUpForm.controls['firstName'].valid"><i class="fa fa-check" aria-hidden="true"></i></span>
+      </div>
+      
+      <div class="alert alert-danger animated flipInX" *ngIf="!signUpForm.controls['firstName'].valid && signUpForm.controls['firstName'].touched">
+          <span *ngIf="signUpForm.controls['firstName'].errors['required']">This field is required</span>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <div class="input-group">
+          <input type="text" 
+                  id="lastName" 
+                  class="form-control"
+                  formControlName="lastName">
+          <span class="input-group-addon" *ngIf="signUpForm.controls['lastName'].valid"><i class="fa fa-check" aria-hidden="true"></i></span>
+      </div>
+      <div class="alert alert-danger animated flipInX" *ngIf="!signUpForm.controls['lastName'].valid && signUpForm.controls['lastName'].touched">
+          <span *ngIf="signUpForm.controls['lastName'].errors['required']">This field is required</span>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="email">Mail Address</label>
+      <div class="input-group">
+          <input type="email" 
+                  id="email" 
+                  class="form-control"
+                  formControlName="email">
+          <span class="input-group-addon" *ngIf="signUpForm.controls['email'].valid"><i class="fa fa-check" aria-hidden="true"></i></span>
+      </div>
+      <div class="alert alert-danger animated flipInX" *ngIf="!signUpForm.controls['email'].valid && signUpForm.controls['email'].touched">
+          <span *ngIf="signUpForm.controls['email'].errors['required']">This field is required</span>
+          <span *ngIf="signUpForm.controls['email'].errors['pattern']">Must enter a valid email</span>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group">
+          <input type="password" 
+                  id="password" 
+                  class="form-control"
+                  formControlName="password">
+          <span class="input-group-addon" *ngIf="signUpForm.controls['password'].valid"><i class="fa fa-check" aria-hidden="true"></i></span>
+      </div>
+      <div class="alert alert-danger animated flipInX" *ngIf="!signUpForm.controls['password'].valid && signUpForm.controls['password'].dirty">
+          <span *ngIf="signUpForm.controls['password'].errors['required']">This field is required</span>
+          <span *ngIf="signUpForm.controls['password'].errors['minlength']">Must be at least 6 characters</span>
+      </div>
+  </div>
+  <div class="form-group" *ngIf="signUpForm.controls['password'].valid">
+      <label for="verifyPassword">Confirm Password</label>
+      <div class="input-group">
+          <input type="password" 
+                  id="confirmPassword" 
+                  class="form-control"
+                  formControlName="verifyPassword">
+          <span class="input-group-addon" *ngIf="signUpForm.controls['verifyPassword'].valid"><i class="fa fa-check" aria-hidden="true"></i></span>
+      </div>
+      <div class="alert alert-danger animated flipInX" *ngIf="!signUpForm.controls['verifyPassword'].valid && signUpForm.controls['verifyPassword'].dirty">
+          <span *ngIf="signUpForm.controls['verifyPassword'].pristine || signUpForm.controls['verifyPassword'].errors?.MatchPassword">Password does not match</span>
+      </div>
+  </div>
+  <button class="btn btn-success btn-block" type="submit" [disabled]="!signUpForm.valid">Submit</button>
+</form>

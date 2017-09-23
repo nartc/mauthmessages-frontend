@@ -1,0 +1,17 @@
+<form ngNativeValidate (ngSubmit)="onAddMessageSubmit(f)" #f="ngForm">
+  <div class="form-group">
+      <label for="content"><strong>Content</strong></label>
+      <input type="text" 
+             class="form-control" 
+             id="content"
+             ngModel
+             name="content"
+             required>
+  </div>
+  <button class="btn btn-outline-primary" 
+          type="submit" 
+          style="cursor:pointer">
+      Save
+  </button>
+</form>
+  

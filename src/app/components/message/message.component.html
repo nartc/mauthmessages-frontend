@@ -1,0 +1,30 @@
+<article class="card card-default">
+  <div class="card-body">
+      <div class="card-text">
+          {{message.content}}
+      </div>
+  </div>
+  <footer class="card-footer">
+      <div class="float-left" id="authorDiv">
+          by. {{message.user}}
+      </div>
+      <div class="float-right">
+          <button
+              type="button"
+              class="btn btn-outline-info btn-sm"
+              style="cursor:pointer;"
+              (click)="onEditClick()"
+          >
+              Edit
+          </button>
+          <button
+              type="button"
+              class="btn btn-outline-danger btn-sm"
+              style="cursor:pointer;"
+              (click)="onDeleteClick()"
+          >
+              Delete
+          </button>
+      </div>
+  </footer>
+</article>
