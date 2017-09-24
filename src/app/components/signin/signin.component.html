@@ -1,6 +1,6 @@
 <h3>Sign In</h3>
 <br>
-<form [formGroup]="signInForm" (ngSubmit)="onSignInSubmit()" ngNativeValidate>
+<form [formGroup]="signInForm" (ngSubmit)="onSignInSubmit(signInForm.value)" ngNativeValidate>
   <div class="form-group">
       <label for="email">Mail</label>
       <div class="input-group">
