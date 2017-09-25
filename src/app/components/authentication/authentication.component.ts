@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-authentication',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router,
+    public authService: AuthService
+  ) { }
 
   ngOnInit() {
+  }
+
+  onLogoutClick() {
+    console.log('Signing out...');
+
+    setTimeout(() => {
+      console.log('Signed out')
+      this.authService.signOut();
+      this.router.navigate(['/auth/signin']);
+    }, 500)
+    
   }
 
 }

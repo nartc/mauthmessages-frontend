@@ -26,5 +26,5 @@
           <span *ngIf="signInForm.controls['password'].errors['minlength']">Must be at least 6 characters</span>
       </div>
   </div>
-  <button class="btn btn-success btn-block" type="submit" style="cursor:pointer" [disabled]="!signInForm.valid">Signin</button>
+  <button class="btn btn-success btn-block" type="submit" [disabled]="!signInForm.valid" id="submitBtn">Signin</button>
 </form>

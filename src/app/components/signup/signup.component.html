@@ -69,5 +69,5 @@
           <span *ngIf="signUpForm.controls['verifyPassword'].pristine || signUpForm.controls['verifyPassword'].errors?.MatchPassword">Password does not match</span>
       </div>
   </div>
-  <button class="btn btn-success btn-block" type="submit" [disabled]="!signUpForm.valid">Submit</button>
+  <button class="btn btn-success btn-block" type="submit" [disabled]="!signUpForm.valid" id="submitBtn">Submit</button>
 </form>

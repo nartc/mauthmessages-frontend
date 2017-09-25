@@ -1,12 +1,13 @@
+import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 import { Routes } from '@angular/router';
 
-import { LogoutComponent } from '../components/logout/logout.component';
 import { SigninComponent } from '../components/signin/signin.component';
 import { SignupComponent } from '../components/signup/signup.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { LoginGuard } from '../guards/login.guard';
 
 export const AUTH_ROUTES: Routes = [
-    {path: '', redirectTo: 'signin', pathMatch: 'full'},
+    {path: '', redirectTo: 'signup', pathMatch: 'full'},
     {path: 'signup', component: SignupComponent},
-    {path: 'signin', component: SigninComponent},
-    {path: 'logout', component: LogoutComponent}
+    {path: 'signin', component: SigninComponent, canActivate:[LoginGuard]}
 ];

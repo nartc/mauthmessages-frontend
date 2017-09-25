@@ -12,6 +12,14 @@ import { PasswordValidation } from './password-validation';
         span.input-group-addon{
             color: #37b278;
         }
+
+        #submitBtn:disabled{
+            cursor: not-allowed;
+        }
+                
+        #submitBtn{
+            cursor: pointer;
+        }
     `]
 })
 

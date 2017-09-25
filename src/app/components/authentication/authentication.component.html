@@ -4,11 +4,11 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['signup']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Signup</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!authService.isSignedIn()">
         <a class="nav-link" [routerLink]="['signin']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Signin</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['logout']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Logout</a>
+      <li class="nav-item" *ngIf="authService.isSignedIn()">
+        <a class="nav-link btn-danger" (click)="onLogoutClick()" id="logoutNavLink">Logout</a>
       </li>
     </ul>
   </nav>
