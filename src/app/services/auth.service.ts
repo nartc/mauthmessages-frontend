@@ -17,6 +17,10 @@ export class AuthService {
     return this.httpService.post('/users/addUser', body, {'Content-Type':'application/json'});
   }
 
+  getUserById(id: string): Observable<any> {
+    return this.httpService.get('/users/getUserById/'+id, {});
+  }
+
   signIn(credentials): Observable<any> {
     const body = {credentials};
     return this.httpService.post('/users/signin', body, {'Content-Type':'application/json'});

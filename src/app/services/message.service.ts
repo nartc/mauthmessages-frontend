@@ -30,8 +30,14 @@ export class MessageService {
     private httpService: HttpService
   ) { }
 
-  getMessages() {
-    return this.messages;
+  getMessages(): Observable<any> {
+    return this.httpService.get('/messages/messages', {});
+  }
+
+  addMessages(message: Message): Observable<any> {
+    const body = {message};
+    const token = this.localStorageService.fetchValueFromKey('token') ? this.localStorageService.fetchValueFromKey('token') : '';
+    return this.httpService.post('/messages/addMessage', body, {'Authorization': token, 'Content-Type':'application/json'});
   }
 
 }

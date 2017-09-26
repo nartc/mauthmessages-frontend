@@ -1,12 +1,14 @@
+import { User } from './user';
+
 export class Message {
     content: string;
-    user: string;
+    user: User;
     messageId?: string;
     userId?: string;
 
     constructor(
         content: string,
-        user: string,
+        user: User,
         messageId?: string,
         userId?: string
     ) {
