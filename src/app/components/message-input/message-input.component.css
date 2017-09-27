@@ -1,0 +1,11 @@
+input.ng-invalid.ng-touched{
+    border-color: red;
+    border-radius: 7px;
+    box-shadow: 0 0 1px red;
+    transition: box-shadow ease-in 0.5s;
+}
+
+input:focus{
+    box-shadow: 0 0 1px skyblue;
+    transform: box-shadow ease-in 0.5s;
+}

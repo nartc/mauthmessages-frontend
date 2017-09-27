@@ -1,0 +1,6 @@
+span.currentUser{
+    font-style: italic;
+    font-size: 20px;
+    position: relative;
+    bottom: 10px;
+}

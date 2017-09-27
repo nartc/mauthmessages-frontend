@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
+import { SweetAlertService } from 'angular-sweetalert-service/js';
 
 @Component({
     selector: 'app-signin',
@@ -29,7 +30,8 @@ export class SigninComponent {
     constructor(
         public fB: FormBuilder,
         public authService: AuthService,
-        public router: Router
+        public router: Router,
+        public alertService: SweetAlertService
     ) {
 
     }
@@ -61,10 +63,13 @@ export class SigninComponent {
                         this.router.navigate(['/messages']);
                     } else {
                         console.log('Error signing in');
-                        this.router.navigate(['/auth/signin']);
+                        this.alertService.alert({
+                            title: 'Error',
+                            text: data.message,
+                            type: 'warning'
+                        });
                     }
                 }
             );
-        this.signInForm.reset();
     }
 }

@@ -6,9 +6,9 @@
   </div>
   <footer class="card-footer">
       <div class="float-left" id="authorDiv">
-          by. {{message.user.firstName}}
+          by. {{message.user}}
       </div>
-      <div class="float-right">
+      <div class="float-right" *ngIf="belongsToUser()">
           <button
               type="button"
               class="btn btn-outline-info btn-sm"
@@ -21,7 +21,7 @@
               type="button"
               class="btn btn-outline-danger btn-sm"
               style="cursor:pointer;"
-              (click)="onDeleteClick()"
+              (click)="onDeleteClick(message)"
           >
               Delete
           </button>

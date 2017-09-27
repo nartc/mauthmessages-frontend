@@ -4,7 +4,7 @@
       <input type="text" 
              class="form-control" 
              id="content"
-             ngModel
+             [ngModel]="message?.content"
              name="content"
              required>
   </div>
@@ -12,6 +12,12 @@
           type="submit" 
           style="cursor:pointer">
       Save
+  </button>
+  <button class="btn btn-outline-danger" 
+          type="button" 
+          style="cursor:pointer"
+          (click)="onClearClick(f)">
+      Clear
   </button>
 </form>
   

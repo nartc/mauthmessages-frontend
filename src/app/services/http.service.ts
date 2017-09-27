@@ -1,7 +1,8 @@
-import { map } from 'rxjs/operator/map';
-import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class HttpService {
@@ -10,7 +11,7 @@ export class HttpService {
   public static port = '3000';
   public static url = 'http://'+ HttpService.host + ':' + HttpService.port;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private errorService: ErrorService) { }
 
   get(endpoint: string, headersObject: Object): Observable<any> {
     let headers: Headers = new Headers(headersObject);
@@ -25,8 +26,10 @@ export class HttpService {
         }
       )
       .catch(
-        (err: Response) => Observable.throw(err.json()) 
-      );
+        (err: Response) => {
+          this.errorService.handleError(err);
+          return Observable.throw(err)
+        });
   }
 
   post(endpoint: string, body: any, headersObject: Object): Observable<any> {
@@ -44,8 +47,10 @@ export class HttpService {
         }
       )
       .catch(
-        (err: Response) => Observable.throw(err)  
-      );
+        (err: Response) => {
+          this.errorService.handleError(err);
+          return Observable.throw(err)
+        });
   }
 
   put(endpoint: string, body: any, headersObject: Object): Observable<any> {
@@ -63,8 +68,10 @@ export class HttpService {
         }
       )
       .catch(
-        (err: Response) => Observable.throw(err.json())
-      );
+        (err: Response) => {
+          this.errorService.handleError(err);
+          return Observable.throw(err)
+        });
   }
 
   delete(endpoint: string, headersObject: Object): Observable<any> {
@@ -82,8 +89,10 @@ export class HttpService {
         }
       )
       .catch(
-        (err: Response) => Observable.throw(err.json())
-      );
+        (err: Response) => {
+          this.errorService.handleError(err);
+          return Observable.throw(err)
+        });
   }
 
   patch(endpoint: string, body: any, headersObject: Object): Observable<any> {
@@ -101,8 +110,10 @@ export class HttpService {
         }
       )
       .catch(
-        (err: Response) => Observable.throw(err.json())
-      );
+        (err: Response) => {
+          this.errorService.handleError(err);
+          return Observable.throw(err)
+        });
   }
 
 }

@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
 export class LocalStorageService {
-
+    public localStorageIsClear: EventEmitter<any> = new EventEmitter<any>()
   constructor() { }
 
   public saveValueWithKey(key: string, value: any): void {
     localStorage.setItem(key, value);
+    this.localStorageIsClear.emit();
   }
 
   public fetchValueFromKey(key: string): any {
@@ -19,5 +20,6 @@ export class LocalStorageService {
 
   public clearAll(): void {
       localStorage.clear();
+      this.localStorageIsClear.emit();
   }
 }

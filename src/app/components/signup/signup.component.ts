@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { PasswordValidation } from './password-validation';
+import { SweetAlertService } from 'angular-sweetalert-service/js';
 
 @Component({
     selector: 'app-signup',
@@ -30,7 +31,8 @@ export class SignupComponent implements OnInit {
     
     constructor(
         public fB: FormBuilder,
-        public authService: AuthService
+        public authService: AuthService,
+        public alertService: SweetAlertService
     ) {
 
     }
@@ -64,8 +66,14 @@ export class SignupComponent implements OnInit {
                 (data: any) => {
                     if(data.success) {
                         console.log('New user added', data.user);
+                        this.signUpForm.reset();
                     } else {
-                        console.log('Error adding new user', data.err.message);
+                        console.log('Error adding new user', data.err);
+                        this.alertService.alert({
+                            title: data.err.name,
+                            text: `${data.err.errors.email.message} is already existed`,
+                            type: 'warning'
+                        });
                     }
                 },
                 (err: any) => {
@@ -73,6 +81,6 @@ export class SignupComponent implements OnInit {
                 }
             );
 
-        this.signUpForm.reset();
+        
     }
 }
