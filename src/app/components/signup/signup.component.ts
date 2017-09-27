@@ -74,7 +74,7 @@ export class SignupComponent implements OnInit {
                             text: 'Congrats! You are able to sign in now',
                             type: 'success',
                             confirmButtonText: 'Go to sign in',
-                            showCancelButton: true
+                            showCancelButton: false
                         })
                         .then(
                             () => {
