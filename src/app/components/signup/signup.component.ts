@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -32,7 +33,8 @@ export class SignupComponent implements OnInit {
     constructor(
         public fB: FormBuilder,
         public authService: AuthService,
-        public alertService: SweetAlertService
+        public alertService: SweetAlertService,
+        public router: Router
     ) {
 
     }
@@ -67,6 +69,18 @@ export class SignupComponent implements OnInit {
                     if(data.success) {
                         console.log('New user added', data.user);
                         this.signUpForm.reset();
+                        this.alertService.confirm({
+                            title: data.message,
+                            text: 'Congrats! You are able to sign in now',
+                            type: 'success',
+                            confirmButtonText: 'Go to sign in',
+                            showCancelButton: true
+                        })
+                        .then(
+                            () => {
+                                this.router.navigate(['/auth/signin']);
+                            }
+                        );
                     } else {
                         console.log('Error adding new user', data.err);
                         this.alertService.alert({
