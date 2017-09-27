@@ -9,7 +9,7 @@ export class HttpService {
   
   public static host = 'localhost';
   public static port = '3000';
-  public static domain = 'mean-auth-messages.herokuapp.com/';
+  public static domain = 'mean-auth-messages.herokuapp.com';
 
   //public static url = 'http://'+ HttpService.host + ':' + HttpService.port;
   public static url = 'https://'+ HttpService.domain;
